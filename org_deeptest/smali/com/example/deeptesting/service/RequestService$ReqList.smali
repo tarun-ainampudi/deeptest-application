@@ -102,7 +102,7 @@
 
     # move-result-object v0
 
-    const-string v0, "RMX3611"
+    const-string v0, "replacemewithyourmodel"
 
     iput-object v0, p0, Lcom/example/deeptesting/service/RequestService$ReqList;->mModel:Ljava/lang/String;
 
@@ -111,7 +111,7 @@
 
     # move-result-object v0
 
-    const-string v0, "RMX3611_11.A.36_0360_2025010615328"
+    const-string v0, "replacemewithyourotaversion"
 
     iput-object v0, p0, Lcom/example/deeptesting/service/RequestService$ReqList;->mOtaVersion:Ljava/lang/String;
 
@@ -152,7 +152,7 @@
 
     # move-result-object v0
 
-    const-string v0, ""
+    const-string v0, "replacemewithyouroperator"
 
     iput-object v0, p0, Lcom/example/deeptesting/service/RequestService$ReqList;->mOperator:Ljava/lang/String;
 

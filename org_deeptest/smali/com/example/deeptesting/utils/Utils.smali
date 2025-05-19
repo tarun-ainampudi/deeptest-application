@@ -1124,7 +1124,7 @@
 
     # move-result-object v5
 
-    const-string v5, "RMX3611"
+    const-string v5, "replacemewithyourmodel"
 
     invoke-virtual {v3, v4, v5}, Lokhttp3/Request$Builder;->addHeader(Ljava/lang/String;Ljava/lang/String;)Lokhttp3/Request$Builder;
 
@@ -1137,7 +1137,7 @@
 
     # move-result-object v5
 
-    const-string v5, "RMX3611_11.A.36_0360_2025010615328"
+    const-string v5, "replacemewithyourotaversion"
 
     invoke-virtual {v3, v4, v5}, Lokhttp3/Request$Builder;->addHeader(Ljava/lang/String;Ljava/lang/String;)Lokhttp3/Request$Builder;
 
@@ -1178,7 +1178,7 @@
 
     # move-result-object v5
 
-    const-string v5, "RMX3611_11_A.36"
+    const-string v5, "replacemewithyourromversion"
 
     invoke-virtual {v3, v4, v5}, Lokhttp3/Request$Builder;->addHeader(Ljava/lang/String;Ljava/lang/String;)Lokhttp3/Request$Builder;
 
@@ -1193,7 +1193,7 @@
 
     # move-result-object v5
 
-    const-string v5, "V12.1"
+    const-string v5, "replacemewithyourcolorosversion"
 
     invoke-virtual {v3, v4, v5}, Lokhttp3/Request$Builder;->addHeader(Ljava/lang/String;Ljava/lang/String;)Lokhttp3/Request$Builder;
 
@@ -1208,7 +1208,7 @@
 
     # move-result-object v5
 
-    const-string v5, "12"
+    const-string v5, "replacemewithyourandroidversion"
 
     invoke-virtual {v3, v4, v5}, Lokhttp3/Request$Builder;->addHeader(Ljava/lang/String;Ljava/lang/String;)Lokhttp3/Request$Builder;
 
@@ -1223,7 +1223,7 @@
 
     # move-result-object v5
 
-    const-string v5, ""
+    const-string v5, "replacemewithyourtrackregion"
 
     invoke-virtual {v3, v4, v5}, Lokhttp3/Request$Builder;->addHeader(Ljava/lang/String;Ljava/lang/String;)Lokhttp3/Request$Builder;
 
@@ -1238,7 +1238,7 @@
 
     # move-result-object v5
 
-    const-string v5, ""
+    const-string v5, "replacemewithyoururegion"
 
     invoke-virtual {v3, v4, v5}, Lokhttp3/Request$Builder;->addHeader(Ljava/lang/String;Ljava/lang/String;)Lokhttp3/Request$Builder;
 

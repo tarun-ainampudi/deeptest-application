@@ -2,6 +2,10 @@ import subprocess
 import re
 import json
 import fileinput
+import os
+import shutil
+import model_change   
+from collections import defaultdict
 
 
 def get_pid(package_name):
@@ -89,6 +93,15 @@ def rebuild_and_install_apk():
 if __name__ == "__main__":
     package_name = "com.coloros.deeptesting"
     token = chipId = udid = None
+    
+    otaversion = model_change.otaversion
+    colorosversion = model_change.colorosversion
+    androidversion = model_change.androidversion
+    trackregion = model_change.trackregion
+    uregion = model_change.uregion
+    operator = model_change.operator
+    model = model_change.model
+    romversion = model_change.romversion 
 
     while not (token and chipId and udid):
         pid = get_pid(package_name)
@@ -105,45 +118,116 @@ if __name__ == "__main__":
     # replacemewithyourtoken
 
     # Example: Replace values in smali files based on extracted data
-
+    
     replacements = [
-        {
-            "file": r".\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
-            "search": "replacemewithyourserialid",
-            "replace": chipId
-        },
-        {
-            "file": r".\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
-            "search": "replacemewithyourimei",
-            "replace": udid
-        },
-        {
-            "file": r".\org_deeptest\smali_classes2\com\heytap\usercenter\accountsdk\AccountAgent.smali",
-            "search": "replacemewithyourtoken",
-            "replace": token
-        }
+    # RequestService$ReqList.smali
+    {
+        "file": r".\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
+        "search": "replacemewithyourmodel",
+        "replace": model
+    },
+    {
+        "file": r".\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
+        "search": "replacemewithyourotaversion",
+        "replace": otaversion
+    },
+    {
+        "file": r".\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
+        "search": "replacemewithyouroperator",
+        "replace": operator
+    },
+    {
+        "file": r".\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
+        "search": "replacemewithyourserialid",
+        "replace": chipId
+    },
+    {
+        "file": r".\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
+        "search": "replacemewithyourimei",
+        "replace": udid
+    },
+
+    # Utils.smali
+    {
+        "file": r".\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
+        "search": "replacemewithyourmodel",
+        "replace": model
+    },
+    {
+        "file": r".\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
+        "search": "replacemewithyourotaversion",
+        "replace": otaversion
+    },
+    {
+        "file": r".\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
+        "search": "replacemewithyourromversion",
+        "replace": romversion
+    },
+    {
+        "file": r".\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
+        "search": "replacemewithyourcolorosversion",
+        "replace": colorosversion
+    },
+    {
+        "file": r".\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
+        "search": "replacemewithyourandroidversion",
+        "replace": androidversion
+    },
+    {
+        "file": r".\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
+        "search": "replacemewithyourtrackregion",
+        "replace": trackregion
+    },
+    {
+        "file": r".\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
+        "search": "replacemewithyoururegion",
+        "replace": uregion
+    },
+    
+    # AccountAgent.smali
+    {
+        "file": r".\org_deeptest\smali_classes2\com\heytap\usercenter\accountsdk\AccountAgent.smali",
+        "search": "replacemewithyourtoken",
+        "replace": token
+    }
     ]
 
+    # Group replacements by file
+    file_replacements = defaultdict(list)
     for item in replacements:
-        if item["replace"]:
-            with fileinput.FileInput(item["file"], inplace=True, backup='.bak', encoding='utf-8') as file:
-                for line in file:
-                    print(line.replace(item["search"],
-                          item["replace"]), end='')
+        file_replacements[item["file"]].append((item["search"], item["replace"]))
+
+    for file_path, changes in file_replacements.items():
+        # Read file content
+        with fileinput.FileInput(file_path, inplace=True, backup='.bak', encoding='utf-8') as file:
+            for line in file:
+                for search, replace in changes:
+                    line = line.replace(search, replace)
+                print(line, end='')
     print("✅ Smali files updated with extracted values.")
-    subprocess.run(["cmd", "/c", "del /s /q .\\*.bak"], shell=True)
 
     # Run ./install.bat
     # subprocess.run(["cmd", "/Q", "/C", "install.bat"], check=True)
 
     rebuild_and_install_apk()
-
+    
+    files_to_restore = []
+    
     for item in replacements:
-        if item["search"]:
-            with fileinput.FileInput(item["file"], inplace=True, backup='.bak', encoding='utf-8') as file:
-                for line in file:
-                    print(line.replace(item["replace"],
-                          item["search"]), end='')
-    print("✅ Smali files updated with default values.")
+        if os.path.exists(item["file"] + '.bak') and item["file"] not in files_to_restore:
+            files_to_restore.append(item["file"])
 
-    subprocess.run(["cmd", "/c", "del /s /q .\\*.bak"], shell=True)
+    for item in files_to_restore:
+        original_file = item
+        backup_file = original_file + '.bak'
+
+        # Restore only if backup exists
+        if os.path.exists(backup_file):
+                # Remove the modified file
+                os.remove(original_file)
+                # Rename .bak file back to original
+                shutil.move(backup_file, original_file)
+                print(f"✅ Restored: {original_file}")
+        else:
+            if not os.path.exists(original_file):
+                print(f"❌ No file found for: {original_file}")

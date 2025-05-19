@@ -102,6 +102,7 @@ if __name__ == "__main__":
     operator = model_change.operator
     model = model_change.model
     romversion = model_change.romversion 
+    product_name = model_change.product_name
 
     while not (token and chipId and udid):
         pid = get_pid(package_name)
@@ -154,7 +155,7 @@ if __name__ == "__main__":
     {
         "file": r".\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
         "search": "replacemewithyourmodel",
-        "replace": model
+        "replace": product_name
     },
     {
         "file": r".\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",

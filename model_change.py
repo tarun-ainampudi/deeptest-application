@@ -10,15 +10,12 @@ androidversion = "12"
 trackregion = ""
 uregion = ""
 operator = ""
-model = otaversion.split("_")[0]
-product_name = model
+product_name = otaversion.split("_")[0]
 romversion = otaversion.split("_")[0] + "_" +  otaversion.split("_")[1].split(".")[0] + "_" + otaversion.split("_")[1].split(".")[1] + "." + otaversion.split("_")[1].split(".")[2] 
 
 # Example values to replace in the above code:
 
 # ro.product.name - product_name: e.g., RMX3461
-
-# ro.product.model - model: e.g., RMX3461
 
 # ro.build.version.ota - otaVersion: e.g., RMX3461_11.C.20_1200_202408131148
 

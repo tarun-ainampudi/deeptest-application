@@ -4,14 +4,14 @@
 # CHANGE THE VALUES HERE TO CHANGE THE MODEL
 # CHANGE THE VALUES HERE TO CHANGE THE MODEL
 
-otaversion = "RMX3461_11.C.20_1200_202408131148" 
-colorosversion = "V12.1"
-androidversion = "12"
+otaversion = "RMX3783_11.A.58_0580_202404021909" 
+colorosversion = "V13.2"
+androidversion = "13"
 trackregion = ""
 uregion = ""
 operator = ""
-product_name = otaversion.split("_")[0]
-romversion = otaversion.split("_")[0] + "_" +  otaversion.split("_")[1].split(".")[0] + "_" + otaversion.split("_")[1].split(".")[1] + "." + otaversion.split("_")[1].split(".")[2] 
+product_name = "RMX3783"
+romversion = "RMX3783_13.2.0.530(SP01CN01)"
 
 # Example values to replace in the above code:
 

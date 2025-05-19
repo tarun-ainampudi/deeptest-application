@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="coui_navigation_item_text_size">10.0sp</dimen>
-    <dimen name="coui_page_indicator_dot_stroke_width">2.0px</dimen>
-    <dimen name="coui_support_menu_width">328.0dip</dimen>
-    <dimen name="coui_search_linear_divider_width">2.0px</dimen>
-</resources>

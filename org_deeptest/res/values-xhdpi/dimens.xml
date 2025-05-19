@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="coui_navigation_item_text_size">9.0sp</dimen>
-    <dimen name="coui_search_linear_divider_width">1.0px</dimen>
-</resources>

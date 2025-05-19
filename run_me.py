@@ -119,6 +119,9 @@ if __name__ == "__main__":
 
     # Example: Replace values in smali files based on extracted data
     
+    subprocess.run(["apktool.bat", "d", "org_deeptest.apk",
+                       "-o", "org_deeptest"], check=True)
+    
     replacements = [
     # RequestService$ReqList.smali
     {
@@ -204,30 +207,39 @@ if __name__ == "__main__":
                 for search, replace in changes:
                     line = line.replace(search, replace)
                 print(line, end='')
-    print("✅ Smali files updated with extracted values.")
+    print("\n✅ Smali files updated with extracted values.\n")
 
     # Run ./install.bat
     # subprocess.run(["cmd", "/Q", "/C", "install.bat"], check=True)
 
     rebuild_and_install_apk()
     
-    files_to_restore = []
+    # files_to_restore = []
     
-    for item in replacements:
-        if os.path.exists(item["file"] + '.bak') and item["file"] not in files_to_restore:
-            files_to_restore.append(item["file"])
+    # for item in replacements:
+    #     if os.path.exists(item["file"] + '.bak') and item["file"] not in files_to_restore:
+    #         files_to_restore.append(item["file"])
 
-    for item in files_to_restore:
-        original_file = item
-        backup_file = original_file + '.bak'
+    # for item in files_to_restore:
+    #     original_file = item
+    #     backup_file = original_file + '.bak'
 
-        # Restore only if backup exists
-        if os.path.exists(backup_file):
-                # Remove the modified file
-                os.remove(original_file)
-                # Rename .bak file back to original
-                shutil.move(backup_file, original_file)
-                print(f"✅ Restored: {original_file}")
-        else:
-            if not os.path.exists(original_file):
-                print(f"❌ No file found for: {original_file}")
+    #     # Restore only if backup exists
+    #     if os.path.exists(backup_file):
+    #             # Remove the modified file
+    #             os.remove(original_file)
+    #             # Rename .bak file back to original
+    #             shutil.move(backup_file, original_file)
+    #             print(f"✅ Restored: {original_file}")
+    #     else:
+    #         if not os.path.exists(original_file):
+    #             print(f"❌ No file found for: {original_file}")
+    
+    if(os.path.exists(r".\org_deeptest")):
+        shutil.rmtree(r".\org_deeptest")
+        
+    if(os.path.exists(r".\mod_deeptest.apk")):
+        os.remove(r".\mod_deeptest.apk")  
+        
+    if(os.path.exists(r".\mod_deeptest")):
+        shutil.rmtree(r".\mod_deeptest") 

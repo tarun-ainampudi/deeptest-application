@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">107410_Depth Testing</string>
+    <string name="application_fail">107437_Failed to submit application.</string>
+    <string name="application_nosubmitted">107436_Application not submitted</string>
+    <string name="application_submitted">107435_Application submitted</string>
+    <string name="apply_agree">107418_I have read and agree to the aforesaid contents.</string>
+    <string name="apply_disclaimer">"158409_1. The test program may have unforeseeable impacts on the phone. If you join this test program, you shall bear the consequent risks.
+2. Some functions, for example, photo taking, may not run properly, or your device may be damaged due to third-party firmware.
+3. Joining the test program may cause personal and confidential information leakage, compromising system security.
+4. The test program may modify some of system functions, and prevent you from updating the system to the latest version of ColorOS.
+5. If you join the test program, your phone will be restored to factory defaults. Before joining the test program, back up data on your phone.
+6. Once you join the test program, your phone cannot be changed or returned, but can be repaired."</string>
+    <string name="apply_submit">107416_Submit Application</string>
+    <string name="apply_supplement">107419_The aforesaid contents do not cover all risks that may come with depth testing. Think twice before joining the test.</string>
+    <string name="apply_title">107415_Disclaimer</string>
+    <string name="detail_excess">107444_The number of users applying for depth testing has reached the maximum limit.</string>
+    <string name="detail_govcustom">107447_This is a government- or corporate-owned phone.</string>
+    <string name="detail_invalidlogin">107449_Abnormal sign-in status</string>
+    <string name="detail_logintime">107450_The activation period of your OPPO ID is less than 60 consecutive days.</string>
+    <string name="detail_mobilecustom">107448_This is a carrier-customized phone.</string>
+    <string name="detail_networktimeout">107446_Network error. Please check the network and try again.</string>
+    <string name="detail_repeat">107445_You submitted a testing application before. Do not submit repeated applications within 60 days.</string>
+    <string name="detail_submitted">162572_Check the result after %s.</string>
+    <string name="detail_timelimit">107443_This phone model does not support depth testing.</string>
+    <string name="detail_wrongdata">107442_Errors in phone parameters found during verification</string>
+    <string name="dialog_applying">109759_Loading... Please wait.</string>
+    <string name="dialog_exittest">107434_Request to Exit Depth Testing</string>
+    <string name="dialog_locktext">"107432_Are you sure you want to exit depth testing?
+"</string>
+    <string name="dialog_no">107431_Cancel</string>
+    <string name="dialog_nonetwork">"107427_No network connection. Please check the network settings and try again.
+"</string>
+    <string name="dialog_ok">107430_OK</string>
+    <string name="dialog_title">107429_Tips</string>
+    <string name="dialog_unlocktext">"107433_Run the bootloader lock command in fastboot mode.
+After the bootloader is locked, you can exit depth testing.
+"</string>
+    <string name="main_apply">107411_Apply Now</string>
+    <string name="main_query">107414_Query Approval Status</string>
+    <string name="main_title">107412_Depth Testing</string>
+    <string name="main_warning">107413_The test program may have unforeseeable impacts on the phone. Users who join this test program shall bear the consequent risks by themselves.</string>
+    <string name="network_timeout">107438_Network timed out.</string>
+    <string name="status_ok">107421_Back</string>
+    <string name="status_start">107422_Start Depth Testing</string>
+    <string name="status_title">107420_Status Query</string>
+    <string name="toast_submitted">107451_Your application has been submitted. Do not submit repeated applications.</string>
+    <string name="verification_fail">107440_Application not approved</string>
+    <string name="verification_pass">107439_Application approved</string>
+    <string name="verification_submitted">107452_Application submitted for approval</string>
+    <string name="warning_condition">"158408_The following conditions must be met before applying for depth testing:
+1. The phone model has been released in the market for more than 3 months.
+2. No application for depth testing was submitted using the same OPPO ID in the last 60 days.
+3. The number of users applying for depth testing does not reach the maximum limit.
+4. The phone is not an enterprise or carrier-customized phone."</string>
+    <string name="warning_continue">107426_Continue Application</string>
+    <string name="warning_switch">107425_Tap here to change the account to apply.</string>
+    <string name="warning_title">107423_Cautions</string>
+</resources>

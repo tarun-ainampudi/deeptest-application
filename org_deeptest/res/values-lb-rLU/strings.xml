@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Déiftentest</string>
+    <string name="application_fail">Ufro konnt net ofgeschéckt ginn.</string>
+    <string name="application_nosubmitted">Ufro net ofgeschéckt</string>
+    <string name="application_submitted">Ufro ofgeschéckt</string>
+    <string name="apply_agree">Ech hunn déi Inhalter hei uewe gelies a stëmmen hinnen zou.</string>
+    <string name="apply_disclaimer">"1. Den Testprogramm kann eventuell onerwaarten Auswierkungen op den Telefon hunn. Benotzer, déi dësem Testprogramm bäitrieden, mussen déi doraus resultéierend Risike selwer droen.
+2. Firmware vun Drëtte kann dozou féieren, dass verschidde Funktiounen (sou wéi Fotoe knipsen) um Telefon net funktionéieren oder Schied um Apparat verursaachen.
+3. Wann Dir dësem Testprogramm bäitrëtt, kann dëst verursaachen, dass perséinlech a vertraulech Informatioune verbreet ginn an d'Systemsécherheet kompromettéiert gëtt.
+4. Den Testprogramm kann eventuel verschidde Systemfunktioune veränneren a Benotzer dorun hënneren, de System op déi neist Versioun vu ColorOS z'aktualiséieren.
+5. Wann Dir dem Testprogramm bäitrëtt, ass Ären Telefon an engem Zoustand, deen sou ähnlech ass, wéi d'Standard-Wierkastellung. Éier Dir dem Testprogramm bäitrëtt, féiert eng Datesécherung op Ärem Telefon duerch.
+6. Soubal Dir dem Testprogramm bäigetruede sidd, ass Ären Telefon net méi ënner Garantie."</string>
+    <string name="apply_submit">Ufro ofschécken</string>
+    <string name="apply_supplement">Déi Inhalter hei uewen, decken net all Risiken, déi den Déiftentest eventuell mat sech bréngt, of. Iwwerleet Iech dat nach emol, déi Dir dem Test bäitrëtt.</string>
+    <string name="apply_title">Haftungsausschloss</string>
+    <string name="coui_keyboard_view_access_close_button">Tastatur reduzéieren</string>
+    <string name="coui_keyboard_view_access_detail_button">Op déi regulär Tastatur ëmschalten</string>
+    <string name="coui_keyboard_view_keycode_low_shift">Op Minusculen ëmschalten</string>
+    <string name="coui_keyboardview_keycode_letters">Op Alphabeter ëmschalten</string>
+    <string name="coui_keyboardview_keycode_number">Nummer wiesselen</string>
+    <string name="coui_keyboardview_keycode_shift_to_uppercase">Op Majusculë ëmschalten</string>
+    <string name="coui_keyboardview_keycode_symbol">Op Symboler ëmschalten</string>
+    <string name="coui_security_alertdailog_privacy">Dateschutzrichtlinn</string>
+    <string name="coui_security_alertdailog_statement">Klickt a kuckt %1$s fir méi Informatiounen.</string>
+    <string name="detail_excess">"D'Unzuel u Benotzer, déi en Déiftentest ufroen, huet d'maximal Limite erreecht."</string>
+    <string name="detail_govcustom">Dëst ass en Telefon, deen der Regierung oder enger Entreprise gehéiert.</string>
+    <string name="detail_invalidlogin">Anormalen Umeldungsstatus</string>
+    <string name="detail_logintime">Den Aktivéierungszäitraum vun Ärer OPPO-ID ass manner wéi 60 konsekutiv Deeg.</string>
+    <string name="detail_mobilecustom">Dëst ass en Telefon, dee vum Bedreiwer ugepasst ginn ass.</string>
+    <string name="detail_networktimeout">"Netzwierkfeeler. W. e. g. iwwerpréift d'Netzwierk a probéiert et erneit."</string>
+    <string name="detail_repeat">Dir huett schonn eng Kéier eng Test-Ufro ageschéckt. Schéckt keng repetéiert Ufroe bannent 60 Deeg an.</string>
+    <string name="detail_submitted">Gëtt beaarbecht... Resultater ginn de 15. Dag vun all Mount aktualiséiert.</string>
+    <string name="detail_timelimit">Dësen Telefonsmodel ënnerstëtzt Déiftentest net.</string>
+    <string name="detail_wrongdata">Feeler am Telefonsparameter während der Verifikatioun fonnt</string>
+    <string name="dialog_applying">Gëtt gelueden… waart w. e. g.</string>
+    <string name="dialog_exittest">Ufroen, fir aus dem Déiftentest erauszegoen</string>
+    <string name="dialog_locktext">"Sidd Dir sécher, dass Dir den Déiftentest verloosse wëllt?
+"</string>
+    <string name="dialog_no">Ofbriechen</string>
+    <string name="dialog_nonetwork">"Keng Netzwierkverbindung. Iwwerpréift w. e. g. d'Netzwierkastellungen a probéiert et erneit.
+"</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_title">Tippen</string>
+    <string name="dialog_unlocktext">"Bootloader Spärbefeel am Fastboot-Modus lafe loossen.
+Wann de Bootloader gespaart ass, kënnt Dir aus dem Déiftentest erausgoen.
+"</string>
+    <string name="main_apply">Elo uwennen</string>
+    <string name="main_query">Status vun der Erlabnes-Offro</string>
+    <string name="main_title">Déiftentest</string>
+    <string name="main_warning">Den Testprogramm kann eventuell onerwaarten Auswierkungen op den Telefon hunn. Benotzer, déi dësem Testprogramm bäitrieden, mussen déi doraus resultéierend Risike selwer droen.</string>
+    <string name="network_timeout">Netzwierk timeout.</string>
+    <string name="status_ok">Zeréck</string>
+    <string name="status_start">Déiftentest starten</string>
+    <string name="status_title">Status-Offro</string>
+    <string name="toast_submitted">Är Ufro ass ofgeschéckt ginn. Schéckt keng repetéiert Ufroen of.</string>
+    <string name="verification_fail">Ufro net bewëllegt</string>
+    <string name="verification_pass">Ufro bewëllegt</string>
+    <string name="verification_submitted">Ufro zur Bewëllegung ofgeschéckt</string>
+    <string name="warning_condition">"Déi folgend Bedéngunge mussen erfëllt sinn, éier eng Ufro fir den Déiftentest gemaach ka ginn.
+1. Den Telefonsmodel gëtt zënter méi wéi 3 Méint um Marché ugebueden.
+2. Et ass keng Ufro fir en Déiftentest fir den Telefon an de leschte 60 Deeg ofgeschéckt ginn.
+3. Dir hutt Iech mat Ärer OPPO-ID op dësem Telefon während méi wéi 60 Deeg ugemellt.
+4. D'Unzuel u Benotzer, déi en Déiftentest ufroen, huet d'maximal Limite nach net erreecht.
+5. Et däerf keen Telefon sinn, deen der Regierung oder enger Entreprise gehéiert, oder dee vum Bedreiwer ugepasst ginn ass."</string>
+    <string name="warning_continue">Mat der Ufro virufueren</string>
+    <string name="warning_switch">"Tippt hei, fir de Kont fir d'Ufro ze änneren."</string>
+    <string name="warning_title">Warnungen</string>
+</resources>

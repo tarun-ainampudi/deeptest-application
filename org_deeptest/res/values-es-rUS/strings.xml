@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="abc_action_bar_home_description">Navegar a la página principal</string>
+    <string name="abc_action_bar_up_description">Navegar hacia arriba</string>
+    <string name="abc_action_menu_overflow_description">Más opciones</string>
+    <string name="abc_action_mode_done">Listo</string>
+    <string name="abc_activity_chooser_view_see_all">Ver todas</string>
+    <string name="abc_activitychooserview_choose_application">Elegir una app</string>
+    <string name="abc_capital_off">DESACTIVAR</string>
+    <string name="abc_capital_on">ACTIVAR</string>
+    <string name="abc_menu_alt_shortcut_label">Alt+</string>
+    <string name="abc_menu_ctrl_shortcut_label">Ctrl+</string>
+    <string name="abc_menu_delete_shortcut_label">borrar</string>
+    <string name="abc_menu_enter_shortcut_label">intro</string>
+    <string name="abc_menu_function_shortcut_label">Función+</string>
+    <string name="abc_menu_meta_shortcut_label">Meta+</string>
+    <string name="abc_menu_shift_shortcut_label">Mayúscula+</string>
+    <string name="abc_menu_space_shortcut_label">espacio</string>
+    <string name="abc_menu_sym_shortcut_label">Sym+</string>
+    <string name="abc_prepend_shortcut_label">Menú+</string>
+    <string name="abc_search_hint">Buscar…</string>
+    <string name="abc_searchview_description_clear">Borrar consulta</string>
+    <string name="abc_searchview_description_query">Búsqueda</string>
+    <string name="abc_searchview_description_search">Buscar</string>
+    <string name="abc_searchview_description_submit">Enviar consulta</string>
+    <string name="abc_searchview_description_voice">Búsqueda por voz</string>
+    <string name="abc_shareactionprovider_share_with">Compartir con</string>
+    <string name="abc_shareactionprovider_share_with_application">Compartir con %s</string>
+    <string name="abc_toolbar_collapse_description">Contraer</string>
+    <string name="app_name">Pruebas profundas</string>
+    <string name="application_fail">No se pudo enviar la solicitud.</string>
+    <string name="application_nosubmitted">No se envió la solicitud</string>
+    <string name="application_submitted">Se envió la solicitud</string>
+    <string name="apply_agree">He leído y acepto los contenidos mencionados anteriormente.</string>
+    <string name="apply_disclaimer">"1. El programa de prueba puede tener efectos impredecibles en el teléfono. Los usuarios que participen en este programa de prueba deberán asumir por sí mismos los riesgos consiguientes.
+2. El firmware de terceros puede causar que algunas funciones del teléfono (como la toma de fotos) no puedan operar o causar daño al dispositivo.
+3. Participar en el programa de prueba puede causar la filtración de información personal y confidencial, comprometiendo la seguridad del sistema.
+4. El programa de prueba puede modificar algunas de las funciones del sistema, e impedir que los usuarios actualicen el sistema a la versión más reciente de ColorOS.
+5. Si usted participa en el programa de prueba, su teléfono estará en un estado similar a las condiciones predeterminadas de fábrica. Antes de participar en el programa de prueba, realice un respaldo de datos de su teléfono.
+6. Una vez que haya iniciado su participación en el programa de prueba, su teléfono pierde la cobertura de garantía."</string>
+    <string name="apply_submit">Enviar solicitud</string>
+    <string name="apply_supplement">Los contenidos mencionados anteriormente no cubren todos los riesgos que pudieran surgir con las pruebas profundas. Piense dos veces antes de participar en la prueba.</string>
+    <string name="apply_title">Aviso legal</string>
+    <string name="copy">Copiar</string>
+    <string name="coui_allow_text">Aceptar</string>
+    <string name="coui_hour">h</string>
+    <string name="coui_install_download_progress_textview">Descargar</string>
+    <string name="coui_lunar_leap_string">闰</string>
+    <string name="coui_minute">min</string>
+    <string name="coui_reject_text">Salir</string>
+    <string name="coui_search_view_text">Cancelar</string>
+    <string name="coui_security_alertdailog_privacy">Política de privacidad</string>
+    <string name="coui_security_alertdailog_statement">Para más información, toque y vea %1$s.</string>
+    <string name="coui_security_alertdialog_checkbox_msg">No preguntar de nuevo</string>
+    <string name="coui_slide_delete">Elim.</string>
+    <string name="coui_time_picker_today">Hoy</string>
+    <string name="detail_excess">El número de usuarios que solicita pruebas profundas ha alcanzado el límite máximo.</string>
+    <string name="detail_govcustom">Este es un teléfono propiedad del gobierno, o de una corporación.</string>
+    <string name="detail_invalidlogin">Estado de inicio de sesión anormal</string>
+    <string name="detail_logintime">El periodo de activación de su OPPO ID es menor a 60 días consecutivos.</string>
+    <string name="detail_mobilecustom">Este es un teléfono personalizado para un operador.</string>
+    <string name="detail_networktimeout">Error de red. Verifique la red e intente de nuevo.</string>
+    <string name="detail_repeat">Usted presentó una solicitud antes. No vuelva a presentar solicitudes antes de 60 días.</string>
+    <string name="detail_submitted">Procesando... Los resultados se actualizan el día 15 de cada mes.</string>
+    <string name="detail_timelimit">Este modelo de teléfono no es compatible con pruebas profundas.</string>
+    <string name="detail_wrongdata">Se encontraron errores en los parámetros del teléfono durante la verificación</string>
+    <string name="dialog_applying">Cargando... Por favor espere.</string>
+    <string name="dialog_exittest">Solicitar salir de pruebas profundas</string>
+    <string name="dialog_locktext">"¿Está seguro de que desea salir de las pruebas profundas?
+"</string>
+    <string name="dialog_no">Cancelar</string>
+    <string name="dialog_nonetwork">"No hay conexión de red. Verifique la configuración de la red e intente de nuevo.
+"</string>
+    <string name="dialog_ok">Aceptar</string>
+    <string name="dialog_title">Sugerencias</string>
+    <string name="dialog_unlocktext">"Ejecute el comando de bloqueo de cargador de arranque en modo arranque rápido.
+Una vez que el cargador de arranque esté bloqueado, puede salir de las pruebas profundas.
+"</string>
+    <string name="expand_button_title">Opciones avanzadas</string>
+    <string name="main_apply">Solicitar ahora</string>
+    <string name="main_query">Consultar estado de la aprobación</string>
+    <string name="main_title">Pruebas profundas</string>
+    <string name="main_warning">El programa de prueba puede tener efectos impredecibles en el teléfono. Los usuarios que participen en este programa de prueba deberán asumir por sí mismos los riesgos consiguientes.</string>
+    <string name="network_timeout">Se excedió el tiempo de espera de la red.</string>
+    <string name="not_set">Sin definir</string>
+    <string name="preference_copied">Se copió \"%1$s\" en el portapapeles.</string>
+    <string name="search_menu_title">Buscar</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="status_ok">Atrás</string>
+    <string name="status_start">Iniciar pruebas profundas</string>
+    <string name="status_title">Consulta de estado</string>
+    <string name="summary_collapsed_preference_list">%1$s, %2$s</string>
+    <string name="support_abc_searchview_description_clear">Borrar consulta</string>
+    <string name="support_abc_searchview_description_search">Buscar</string>
+    <string name="support_abc_searchview_description_submit">Enviar consulta</string>
+    <string name="support_abc_searchview_description_voice">Búsqueda por voz</string>
+    <string name="toast_submitted">Su solicitud ha sido enviada. No vuelva a presentar solicitudes.</string>
+    <string name="v7_preference_off">DESACTIVADA</string>
+    <string name="v7_preference_on">ACTIVADA</string>
+    <string name="verification_fail">No se aprobó la solicitud</string>
+    <string name="verification_pass">Se aprobó la solicitud</string>
+    <string name="verification_submitted">Se envió la solicitud para aprobación</string>
+    <string name="warning_condition">"Las condiciones siguientes deben cumplirse antes de solicitar las pruebas profundas:
+1. El modelo del teléfono fue lanzado al mercado más de 3 meses antes.
+2. No se presentó ninguna solicitud de pruebas profundas para el teléfono en los últimos 60 días.
+3. Usted ha iniciado sesión con su OPPO ID en este teléfono durante más de 60 días.
+4. El número de usuarios que solicita pruebas profundas no alcanza el límite máximo.
+5. No debe ser un teléfono del gobierno, o propiedad de una corporación o personalizado para un operador."</string>
+    <string name="warning_continue">Continuar solicitud</string>
+    <string name="warning_switch">Toque aquí para cambiar la cuenta a solicitar.</string>
+    <string name="warning_title">Precauciones</string>
+</resources>

@@ -1,10 +1,12 @@
 Uninstall any previously installed Deep Testing apps.
 
-Install the 新版深度测试.apk.
+Install 新版深度测试.apk.
 
 Connect your device to the laptop with USB debugging enabled.
 
-Open the Deep Testing app that was just installed (do not click "Apply" yet).
+Make sure platform-tools are added to your system's PATH and Java is installed to run .jar files.
+
+Open the Deep Testing app that you just installed (do not click "Apply" yet).
 
 Run the run_me.py file.
 
@@ -16,6 +18,6 @@ The terminal will display all the retrieved values.
 
 Another Deep Testing app will be installed and launched automatically. Click "Apply" in this new app.
 
-You will see a confirmation that the application was submitted successfully.
+You will see a confirmation message indicating that the application was submitted successfully.
 
 Cross-verify the submission by checking the query verification in the original app.

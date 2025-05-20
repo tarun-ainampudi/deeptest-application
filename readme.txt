@@ -1,25 +1,64 @@
-Uninstall any previously installed Deep Testing apps.
+## 👤 What You Need To Do
 
-Install 新版深度测试.apk.
+Follow these steps carefully to run the automation successfully:
 
-Connect your device to the laptop with USB debugging enabled.
+---
 
-Make sure platform-tools are added to your system's PATH and that Java is installed to run .jar files.
+### ✅ 1. Install the Required Software
 
-Open the Deep Testing app you just installed (do not click "Apply" yet).
+- **Java Runtime Environment (JRE)**  
+  📥 [Download JRE](https://javadl.oracle.com/webapps/download/AutoDL?BundleId=252044_8a1589aa0fe24566b4337beee47c2d29)
 
-Run the run_me.py file.
+- **Python 3.10 (Required)**  
+  📥 [Download Python 3.10](https://www.python.org/ftp/python/3.10.0/python-3.10.0-amd64.exe)
 
-You will see the message: 🔍 Starting logcat for PID: XXX...
+- Make sure **ADB (platform-tools)** is installed and added to your system's **PATH**.
 
-Once the above message appears, click "Apply" in the app.
+---
 
-The terminal will display all the retrieved values.
+### 🔧 2. Prepare Your Device
 
-Another Deep Testing app will be installed and launched automatically. Click "Apply" in this new app.
+- **Uninstall** any previously installed *Deep Testing* apps.
+- **Install** `新版深度测试.apk` manually.
+- Enable **USB Debugging** from Developer Options.
+- Connect your device to the PC via USB.
 
-You will see a confirmation message indicating that the application was submitted successfully.
+---
 
-Cross-verify the submission by checking the query verification in the original app.
+### 🧪 3. Run the Tool
 
-If the result indicates that the device does not support Deep Testing, change the model in model_change.py and try again.
+- Double-click on `start.bat` to begin the automation.
+- When you see: 🔍 Starting logcat for PID: XXXX...
+
+👉 Click **Apply**.
+
+- The tool will automatically:
+- Read values like `token`, `chipId`, and `udid`.
+- Repackage the modified app.
+- Install it automatically.
+
+- Once the second app opens, click **Apply** again.
+
+---
+
+### ✅ 4. Confirm Submission
+
+- If successful, you will see a message:  
+**“Application submitted successfully.”**
+
+- Open the original app to **verify** the submission via the query section.
+
+---
+
+### 🔁 5. If Submission Fails
+
+If you see a message like:
+> "This device is not supported for Deep Testing"
+
+Do the following:
+- Open `model_change.py`
+- Modify the `model`, `OTA`, or `ROM` values.
+- Save and run `start.bat` again.
+
+Repeat until submission succeeds.
+

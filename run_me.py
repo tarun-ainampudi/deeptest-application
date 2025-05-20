@@ -1,10 +1,11 @@
 import subprocess
 import re
+import sys
 import json
 import fileinput
 import os
 import shutil
-import model_change   
+import model_change
 from collections import defaultdict
 
 
@@ -50,11 +51,11 @@ def extract_values_live(pid):
                     continue
 
                 if token and chipId and udid:
-                    print("\n✅ All values captured. Stopping logcat.")
+                    print("\n✅ All values captured. Stopping logcat.\n")
                     process.terminate()
                     break
     except KeyboardInterrupt:
-        print("\n⛔ Logcat stopped by user.")
+        print("\n⛔ Logcat stopped by user.\n")
         process.terminate()
 
     return token, chipId, udid
@@ -84,24 +85,78 @@ def rebuild_and_install_apk():
         subprocess.run(["adb", "shell", "monkey", "-p", PACKAGE_NAME,
                        "-c", "android.intent.category.LAUNCHER", "1"], check=True)
 
-        print("APK rebuilt, signed, installed, and launched successfully.")
+        print("\nAPK rebuilt, signed, installed, and launched successfully.\n")
 
     except subprocess.CalledProcessError as e:
-        print(f"Error during operation: {e}")
+        print(f"\nrebuild_and_install_apk\n")
+        print(f"\nError during operation: {e}\n")
+
+
+def pre_setup(pm):
+
+    try:
+        subprocess.run(["adb", "shell", "monkey", "-p", pm, "-c",
+                       "android.intent.category.LAUNCHER", "1"], check=True)
+    
+    except subprocess.CalledProcessError as e:
+        print(f"\nError in Launching app : {pm}\n")
+        print(f"\nError during operation: {e}\n")
+
+
+def check_python_version():
+    required_major = 3
+    required_minor = 10
+    current_version = sys.version_info
+    if (current_version.major, current_version.minor) < (required_major, required_minor):
+        print(
+            f"[ERROR] Python 3.10+ required. Found: {current_version.major}.{current_version.minor}")
+        sys.exit(1)
+    else:
+        print(
+            f"[OK] Python version {current_version.major}.{current_version.minor} detected.")
+
+
+def check_jre_version():
+    try:
+        result = subprocess.run(
+            ["java", "-version"], stderr=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
+        output = result.stderr  # Java version is sent to stderr
+        match = re.search(r'version "(.*?)"', output)
+        if match:
+            version_str = match.group(1)
+            major = int(version_str.split('.')[0]) if version_str.startswith(
+                '1.') else int(version_str.split('.')[0])
+            print(
+                f"[OK] Java Runtime Environment version {version_str} detected.")
+        else:
+            print("[ERROR] Could not determine JRE version.")
+            sys.exit(1)
+    except FileNotFoundError:
+        print("[ERROR] Java is not installed or not in PATH.")
+        sys.exit(1)
 
 
 if __name__ == "__main__":
+
+    check_python_version()
+
+    check_jre_version()
+
+    print("\n\n🔧 Loading Values from model_change.py.....\n")
+
     package_name = "com.coloros.deeptesting"
     token = chipId = udid = None
-    
+
     otaversion = model_change.otaversion
     colorosversion = model_change.colorosversion
     androidversion = model_change.androidversion
     trackregion = model_change.trackregion
     uregion = model_change.uregion
     operator = model_change.operator
-    romversion = model_change.romversion 
+    romversion = model_change.romversion
     product_name = model_change.product_name
+
+    pre_setup(package_name)
 
     while not (token and chipId and udid):
         pid = get_pid(package_name)
@@ -118,87 +173,88 @@ if __name__ == "__main__":
     # replacemewithyourtoken
 
     # Example: Replace values in smali files based on extracted data
-    
-    subprocess.run([r".\bin\apktool.bat", "d", r".\bin\org_deeptest.apk",
-                       "-o", r".\bin\org_deeptest"], check=True)
-    
-    replacements = [
-    # RequestService$ReqList.smali
-    {
-        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
-        "search": "replacemewithyourmodel",
-        "replace": product_name
-    },
-    {
-        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
-        "search": "replacemewithyourotaversion",
-        "replace": otaversion
-    },
-    {
-        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
-        "search": "replacemewithyouroperator",
-        "replace": operator
-    },
-    {
-        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
-        "search": "replacemewithyourserialid",
-        "replace": chipId
-    },
-    {
-        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
-        "search": "replacemewithyourimei",
-        "replace": udid
-    },
 
-    # Utils.smali
-    {
-        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
-        "search": "replacemewithyourmodel",
-        "replace": product_name
-    },
-    {
-        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
-        "search": "replacemewithyourotaversion",
-        "replace": otaversion
-    },
-    {
-        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
-        "search": "replacemewithyourromversion",
-        "replace": romversion
-    },
-    {
-        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
-        "search": "replacemewithyourcolorosversion",
-        "replace": colorosversion
-    },
-    {
-        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
-        "search": "replacemewithyourandroidversion",
-        "replace": androidversion
-    },
-    {
-        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
-        "search": "replacemewithyourtrackregion",
-        "replace": trackregion
-    },
-    {
-        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
-        "search": "replacemewithyoururegion",
-        "replace": uregion
-    },
-    
-    # AccountAgent.smali
-    {
-        "file": r".\bin\org_deeptest\smali_classes2\com\heytap\usercenter\accountsdk\AccountAgent.smali",
-        "search": "replacemewithyourtoken",
-        "replace": token
-    }
+    subprocess.run([r".\bin\apktool.bat", "d", r".\bin\org_deeptest.apk",
+                    "-o", r".\bin\org_deeptest"], check=True)
+
+    replacements = [
+        # RequestService$ReqList.smali
+        {
+            "file": r".\bin\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
+            "search": "replacemewithyourmodel",
+            "replace": product_name
+        },
+        {
+            "file": r".\bin\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
+            "search": "replacemewithyourotaversion",
+            "replace": otaversion
+        },
+        {
+            "file": r".\bin\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
+            "search": "replacemewithyouroperator",
+            "replace": operator
+        },
+        {
+            "file": r".\bin\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
+            "search": "replacemewithyourserialid",
+            "replace": chipId
+        },
+        {
+            "file": r".\bin\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
+            "search": "replacemewithyourimei",
+            "replace": udid
+        },
+
+        # Utils.smali
+        {
+            "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
+            "search": "replacemewithyourmodel",
+            "replace": product_name
+        },
+        {
+            "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
+            "search": "replacemewithyourotaversion",
+            "replace": otaversion
+        },
+        {
+            "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
+            "search": "replacemewithyourromversion",
+            "replace": romversion
+        },
+        {
+            "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
+            "search": "replacemewithyourcolorosversion",
+            "replace": colorosversion
+        },
+        {
+            "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
+            "search": "replacemewithyourandroidversion",
+            "replace": androidversion
+        },
+        {
+            "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
+            "search": "replacemewithyourtrackregion",
+            "replace": trackregion
+        },
+        {
+            "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
+            "search": "replacemewithyoururegion",
+            "replace": uregion
+        },
+
+        # AccountAgent.smali
+        {
+            "file": r".\bin\org_deeptest\smali_classes2\com\heytap\usercenter\accountsdk\AccountAgent.smali",
+            "search": "replacemewithyourtoken",
+            "replace": token
+        }
     ]
 
     # Group replacements by file
     file_replacements = defaultdict(list)
     for item in replacements:
-        file_replacements[item["file"]].append((item["search"], item["replace"]))
+        file_replacements[item["file"]].append(
+            (item["search"], item["replace"]))
 
     for file_path, changes in file_replacements.items():
         # Read file content
@@ -213,9 +269,9 @@ if __name__ == "__main__":
     # subprocess.run(["cmd", "/Q", "/C", "install.bat"], check=True)
 
     rebuild_and_install_apk()
-    
+
     # files_to_restore = []
-    
+
     # for item in replacements:
     #     if os.path.exists(item["file"] + '.bak') and item["file"] not in files_to_restore:
     #         files_to_restore.append(item["file"])
@@ -234,18 +290,18 @@ if __name__ == "__main__":
     #     else:
     #         if not os.path.exists(original_file):
     #             print(f"❌ No file found for: {original_file}")
-    
-    if(os.path.exists(r".\bin\org_deeptest")):
+
+    if (os.path.exists(r".\bin\org_deeptest")):
         shutil.rmtree(r".\bin\org_deeptest")
-        
-    if(os.path.exists(r".\bin\mod_deeptest.apk")):
-        os.remove(r".\bin\mod_deeptest.apk")  
-        
-    if(os.path.exists(r".\bin\mod_deeptest")):
-        shutil.rmtree(r".\bin\mod_deeptest") 
-    
-    if(os.path.exists(r".\bin\mod_deeptest-aligned-debugSigned.apk")):
-        os.remove(r".\bin\mod_deeptest-aligned-debugSigned.apk") 
-    
-    if(os.path.exists(r".\bin\mod_deeptest-aligned-debugSigned.apk.idsig")):
-        os.remove(r".\bin\mod_deeptest-aligned-debugSigned.apk.idsig")   
+
+    if (os.path.exists(r".\bin\mod_deeptest.apk")):
+        os.remove(r".\bin\mod_deeptest.apk")
+
+    if (os.path.exists(r".\bin\mod_deeptest")):
+        shutil.rmtree(r".\bin\mod_deeptest")
+
+    if (os.path.exists(r".\bin\mod_deeptest-aligned-debugSigned.apk")):
+        os.remove(r".\bin\mod_deeptest-aligned-debugSigned.apk")
+
+    if (os.path.exists(r".\bin\mod_deeptest-aligned-debugSigned.apk.idsig")):
+        os.remove(r".\bin\mod_deeptest-aligned-debugSigned.apk.idsig")

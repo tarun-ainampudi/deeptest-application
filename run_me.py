@@ -65,12 +65,12 @@ def rebuild_and_install_apk():
 
     try:
         # Rebuild APK
-        subprocess.run(["apktool.bat", "b", "org_deeptest",
-                       "-o", "mod_deeptest.apk"], check=True)
+        subprocess.run([r".\bin\apktool.bat", "b",  r".\bin\org_deeptest",
+                       "-o",  r".\bin\mod_deeptest.apk"], check=True)
 
         # Sign APK
-        subprocess.run(["java", "-jar", "uber-apk-signer.jar", "-a",
-                       "mod_deeptest.apk", "--out", "mod_deeptest"], check=True)
+        subprocess.run(["java", "-jar", r".\bin\uber-apk-signer.jar", "-a",
+                       r".\bin\mod_deeptest.apk", "--out", r".\bin"], check=True)
 
         # Uninstall existing app
         # ignore failure if app is not installed
@@ -78,7 +78,7 @@ def rebuild_and_install_apk():
 
         # Install the newly signed APK
         subprocess.run(
-            ["adb", "install", ".\\mod_deeptest\\mod_deeptest-aligned-debugSigned.apk"], check=True)
+            ["adb", "install", ".\\bin\\mod_deeptest-aligned-debugSigned.apk"], check=True)
 
         # Launch the app
         subprocess.run(["adb", "shell", "monkey", "-p", PACKAGE_NAME,
@@ -119,77 +119,77 @@ if __name__ == "__main__":
 
     # Example: Replace values in smali files based on extracted data
     
-    subprocess.run(["apktool.bat", "d", "org_deeptest.apk",
-                       "-o", "org_deeptest"], check=True)
+    subprocess.run([r".\bin\apktool.bat", "d", r".\bin\org_deeptest.apk",
+                       "-o", r".\bin\org_deeptest"], check=True)
     
     replacements = [
     # RequestService$ReqList.smali
     {
-        "file": r".\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
+        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
         "search": "replacemewithyourmodel",
         "replace": product_name
     },
     {
-        "file": r".\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
+        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
         "search": "replacemewithyourotaversion",
         "replace": otaversion
     },
     {
-        "file": r".\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
+        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
         "search": "replacemewithyouroperator",
         "replace": operator
     },
     {
-        "file": r".\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
+        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
         "search": "replacemewithyourserialid",
         "replace": chipId
     },
     {
-        "file": r".\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
+        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali",
         "search": "replacemewithyourimei",
         "replace": udid
     },
 
     # Utils.smali
     {
-        "file": r".\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
+        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
         "search": "replacemewithyourmodel",
         "replace": product_name
     },
     {
-        "file": r".\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
+        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
         "search": "replacemewithyourotaversion",
         "replace": otaversion
     },
     {
-        "file": r".\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
+        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
         "search": "replacemewithyourromversion",
         "replace": romversion
     },
     {
-        "file": r".\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
+        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
         "search": "replacemewithyourcolorosversion",
         "replace": colorosversion
     },
     {
-        "file": r".\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
+        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
         "search": "replacemewithyourandroidversion",
         "replace": androidversion
     },
     {
-        "file": r".\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
+        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
         "search": "replacemewithyourtrackregion",
         "replace": trackregion
     },
     {
-        "file": r".\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
+        "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
         "search": "replacemewithyoururegion",
         "replace": uregion
     },
     
     # AccountAgent.smali
     {
-        "file": r".\org_deeptest\smali_classes2\com\heytap\usercenter\accountsdk\AccountAgent.smali",
+        "file": r".\bin\org_deeptest\smali_classes2\com\heytap\usercenter\accountsdk\AccountAgent.smali",
         "search": "replacemewithyourtoken",
         "replace": token
     }
@@ -235,11 +235,17 @@ if __name__ == "__main__":
     #         if not os.path.exists(original_file):
     #             print(f"❌ No file found for: {original_file}")
     
-    if(os.path.exists(r".\org_deeptest")):
-        shutil.rmtree(r".\org_deeptest")
+    if(os.path.exists(r".\bin\org_deeptest")):
+        shutil.rmtree(r".\bin\org_deeptest")
         
-    if(os.path.exists(r".\mod_deeptest.apk")):
-        os.remove(r".\mod_deeptest.apk")  
+    if(os.path.exists(r".\bin\mod_deeptest.apk")):
+        os.remove(r".\bin\mod_deeptest.apk")  
         
-    if(os.path.exists(r".\mod_deeptest")):
-        shutil.rmtree(r".\mod_deeptest") 
+    if(os.path.exists(r".\bin\mod_deeptest")):
+        shutil.rmtree(r".\bin\mod_deeptest") 
+    
+    if(os.path.exists(r".\bin\mod_deeptest-aligned-debugSigned.apk")):
+        os.remove(r".\bin\mod_deeptest-aligned-debugSigned.apk") 
+    
+    if(os.path.exists(r".\bin\mod_deeptest-aligned-debugSigned.apk.idsig")):
+        os.remove(r".\bin\mod_deeptest-aligned-debugSigned.apk.idsig")   

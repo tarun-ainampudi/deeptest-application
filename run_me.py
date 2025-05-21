@@ -97,7 +97,7 @@ def pre_setup(pm):
     try:
         subprocess.run(["adb", "shell", "monkey", "-p", pm, "-c",
                        "android.intent.category.LAUNCHER", "1"], check=True)
-    
+
     except subprocess.CalledProcessError as e:
         print(f"\nError in Launching app : {pm}\n")
         print(f"\nError during operation: {e}\n")
@@ -136,6 +136,23 @@ def check_jre_version():
         sys.exit(1)
 
 
+def trash():
+    if (os.path.exists(r".\bin\org_deeptest")):
+        shutil.rmtree(r".\bin\org_deeptest")
+
+    if (os.path.exists(r".\bin\mod_deeptest.apk")):
+        os.remove(r".\bin\mod_deeptest.apk")
+
+    if (os.path.exists(r".\bin\mod_deeptest")):
+        shutil.rmtree(r".\bin\mod_deeptest")
+
+    if (os.path.exists(r".\bin\mod_deeptest-aligned-debugSigned.apk")):
+        os.remove(r".\bin\mod_deeptest-aligned-debugSigned.apk")
+
+    if (os.path.exists(r".\bin\mod_deeptest-aligned-debugSigned.apk.idsig")):
+        os.remove(r".\bin\mod_deeptest-aligned-debugSigned.apk.idsig")
+
+
 if __name__ == "__main__":
 
     check_python_version()
@@ -155,6 +172,8 @@ if __name__ == "__main__":
     operator = model_change.operator
     romversion = model_change.romversion
     product_name = model_change.product_name
+    
+    trash()
 
     pre_setup(package_name)
 
@@ -291,17 +310,4 @@ if __name__ == "__main__":
     #         if not os.path.exists(original_file):
     #             print(f"❌ No file found for: {original_file}")
 
-    if (os.path.exists(r".\bin\org_deeptest")):
-        shutil.rmtree(r".\bin\org_deeptest")
-
-    if (os.path.exists(r".\bin\mod_deeptest.apk")):
-        os.remove(r".\bin\mod_deeptest.apk")
-
-    if (os.path.exists(r".\bin\mod_deeptest")):
-        shutil.rmtree(r".\bin\mod_deeptest")
-
-    if (os.path.exists(r".\bin\mod_deeptest-aligned-debugSigned.apk")):
-        os.remove(r".\bin\mod_deeptest-aligned-debugSigned.apk")
-
-    if (os.path.exists(r".\bin\mod_deeptest-aligned-debugSigned.apk.idsig")):
-        os.remove(r".\bin\mod_deeptest-aligned-debugSigned.apk.idsig")
+    trash()

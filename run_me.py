@@ -172,7 +172,7 @@ if __name__ == "__main__":
     operator = model_change.operator
     romversion = model_change.romversion
     product_name = model_change.product_name
-    
+
     trash()
 
     pre_setup(package_name)
@@ -259,13 +259,6 @@ if __name__ == "__main__":
             "file": r".\bin\org_deeptest\smali\com\example\deeptesting\utils\Utils.smali",
             "search": "replacemewithyoururegion",
             "replace": uregion
-        },
-
-        # AccountAgent.smali
-        {
-            "file": r".\bin\org_deeptest\smali_classes2\com\heytap\usercenter\accountsdk\AccountAgent.smali",
-            "search": "replacemewithyourtoken",
-            "replace": token
         }
     ]
 

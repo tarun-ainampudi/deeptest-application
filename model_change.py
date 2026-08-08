@@ -1,4 +1,7 @@
+# Change the values of imei and serial_id
 
+imei = None # Setting > About device > Status > IMEI 1
+serial_id = None # Setting > About device > Status > Serial number
 
 # CHANGE THE VALUES HERE TO CHANGE THE MODEL
 # CHANGE THE VALUES HERE TO CHANGE THE MODEL

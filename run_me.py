@@ -22,45 +22,6 @@ def get_pid(package_name):
         print("Waiting for the app to start...", end='\r')
         return None
 
-
-def extract_values_live(pid):
-    """Start logcat, extract values live, and stop when done"""
-    print(f"🔍 Starting logcat for PID: {pid}...")
-    token = chipId = udid = None
-    json_re = re.compile(r'requestString:(\{.*\})')
-
-    process = subprocess.Popen(
-        ['adb', 'logcat', f'--pid={pid}'],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        text=True
-    )
-
-    try:
-        for line in process.stdout:
-            # print(line, end='')  # Show on console
-
-            match = json_re.search(line)
-            if match:
-                try:
-                    data = json.loads(match.group(1))
-                    token = data.get('token', token)
-                    chipId = data.get('chipId', chipId)
-                    udid = data.get('udid', udid)
-                except json.JSONDecodeError:
-                    continue
-
-                if token and chipId and udid:
-                    print("\n✅ All values captured. Stopping logcat.\n")
-                    process.terminate()
-                    break
-    except KeyboardInterrupt:
-        print("\n⛔ Logcat stopped by user.\n")
-        process.terminate()
-
-    return token, chipId, udid
-
-
 def rebuild_and_install_apk():
     PACKAGE_NAME = "com.example.deeptesting"
 
@@ -90,18 +51,6 @@ def rebuild_and_install_apk():
     except subprocess.CalledProcessError as e:
         print(f"\nrebuild_and_install_apk\n")
         print(f"\nError during operation: {e}\n")
-
-
-def pre_setup(pm):
-
-    try:
-        subprocess.run(["adb", "shell", "monkey", "-p", pm, "-c",
-                       "android.intent.category.LAUNCHER", "1"], check=True)
-
-    except subprocess.CalledProcessError as e:
-        print(f"\nError in Launching app : {pm}\n")
-        print(f"\nError during operation: {e}\n")
-
 
 def check_python_version():
     required_major = 3
@@ -159,10 +108,7 @@ if __name__ == "__main__":
 
     check_jre_version()
 
-    print("\n\n🔧 Loading Values from model_change.py.....\n")
-
-    package_name = "com.coloros.deeptesting"
-    token = chipId = udid = None
+    print("\n\nLoading Values from model_change.py.....\n")
 
     otaversion = model_change.otaversion
     colorosversion = model_change.colorosversion
@@ -172,26 +118,14 @@ if __name__ == "__main__":
     operator = model_change.operator
     romversion = model_change.romversion
     product_name = model_change.product_name
+    chipId = model_change.serial_id
+    udid = model_change.imei
+    
+    if not (chipId and udid):
+        print("Replace imei and serial_id in model_change.py and run again...")
+        sys.exit(0)
 
     trash()
-
-    pre_setup(package_name)
-
-    while not (token and chipId and udid):
-        pid = get_pid(package_name)
-        if pid:
-            token, chipId, udid = extract_values_live(pid)
-
-    print(
-        f"\n🎯 Final Values:\n\nToken: {token}\n\nChip ID: {chipId}\n\nUDID: {udid}\n\n")
-
-    # ".\org_deeptest\smali\com\example\deeptesting\service\RequestService$ReqList.smali"
-    # "replacemewithyourserialid"
-    # "replacemewithyourimei"
-    # ".\org_deeptest\smali_classes2\com\heytap\usercenter\accountsdk\AccountAgent.smali"
-    # replacemewithyourtoken
-
-    # Example: Replace values in smali files based on extracted data
 
     subprocess.run([r".\bin\apktool.bat", "d", r".\bin\org_deeptest.apk",
                     "-o", r".\bin\org_deeptest"], check=True)
@@ -275,32 +209,8 @@ if __name__ == "__main__":
                 for search, replace in changes:
                     line = line.replace(search, replace)
                 print(line, end='')
-    print("\n✅ Smali files updated with extracted values.\n")
-
-    # Run ./install.bat
-    # subprocess.run(["cmd", "/Q", "/C", "install.bat"], check=True)
+    print("\nSmali files updated with extracted values.\n")
 
     rebuild_and_install_apk()
-
-    # files_to_restore = []
-
-    # for item in replacements:
-    #     if os.path.exists(item["file"] + '.bak') and item["file"] not in files_to_restore:
-    #         files_to_restore.append(item["file"])
-
-    # for item in files_to_restore:
-    #     original_file = item
-    #     backup_file = original_file + '.bak'
-
-    #     # Restore only if backup exists
-    #     if os.path.exists(backup_file):
-    #             # Remove the modified file
-    #             os.remove(original_file)
-    #             # Rename .bak file back to original
-    #             shutil.move(backup_file, original_file)
-    #             print(f"✅ Restored: {original_file}")
-    #     else:
-    #         if not os.path.exists(original_file):
-    #             print(f"❌ No file found for: {original_file}")
 
     trash()
